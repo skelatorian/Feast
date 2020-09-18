@@ -12,7 +12,7 @@
   
   <div class="containerPage grid-y small-grid-frame">
     <!-- Header Section -->
-    <div class="cell header small-cell-block-container text-center bordered">
+    <div class="cell header small-cell-block-container text-center callout bordered">
         <h1>Feast</h1>
     </div>
 
@@ -26,15 +26,40 @@
     <!-- Main Section -->
     <div class="cell small-cell-block-container">
       <div class="grid-x grid-padding-x align-center-middle text-center">
-        <div id="left" class="cell small-4 small-text callout secondary margin-0 padding-0 bordered ">
-          Getting Random Restaurants Link with images, Italian, Chinese, Latin, etc
-          <button id="myBtn" class="success button radius bordered">Generate</button>
+        <div class="position-fixed-top cell leftBox small-4 medium-3 small-auto small-text callout primary bordered margin-0 padding-0 bordered ">
+          
+          <div class="card callout primary border-none" >
+            <div class="card-divider callout primary">
+              <h4> Ramdon Restaurants</h4>
+            </div>
+            <div class="card-section width-50">
+              <p></p>
+              <p>The best Restaurant in the City</p>
+              <button id="generateBtn" class="success small button radius bordered">Generate!</button>
+            </div>
+          </div>
         </div>
-        <div id="right" class="cell small-4 small-text callout warning margin-0 padding-0 bordered">
-          Searching by Categories: Link with images, Italian, Chinese, Latin, etc
-          <button id="myBtn" class="button"> Choose Category</button>
-        </div>
-      </div>
+      
+          <div class="cell small-1 medium-1 callout border-none "></div>
+          
+          <div class=" position-fixed-top cell leftBox small-4 medium-3 small-auto small-text callout primary bordered margin-0 padding-0 bordered">
+            <div class="card callout primary border-none" >
+                <div class="card-divider callout primary">
+                  <h4>Choose your Style </h4>
+                </div>
+                <div class="card-section width-50">
+                  <select name="categoryOp" id="category">
+                    <option value="">Select one</option>
+                    <option value="chinese">Chinese Food</option>
+                    <option value="italian">Latin Food</option>
+                    <option value="italian">Italian Food</option>
+                </select>
+                  <p>Select between Different categories</p>
+                  <button id="SearchBtn" class="success small button radius bordered">Search!</button>
+                </div>
+              </div>
+          </div>
+      
     </div>
   </div>
 

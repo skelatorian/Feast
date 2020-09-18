@@ -3,19 +3,19 @@ body {
   background-color: #f1f8ff;
 };
 
-.header {
+.containerPage .header {
   background-color: #f1f8ff;
-  margin: 2px 0px;
 };
 
-#left {
-  max-height: 100%;
-  background-color: #a5d2ff ;
+.containerPage .leftBox {
+  background-color: red;
+  border: solid;
+  /*border-color: #5089c2*/
 };
 
-#right {
-  max-height: 100%;
-  background-color: #a5d2ff ;
+.rightBox {
+  background-color: #a5d2ff   ;
 };
+
 
 
