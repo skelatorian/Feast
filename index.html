@@ -4,35 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Modal</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"> -->
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <title>Feast</title>
 </head>
 <body>
-
-
-    <!--------------------Modal-------------------------------------->
-    <h2>Animated Modal with Header and Footer</h2>
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+  
+  <div class="containerPage grid-y small-grid-frame">
+    <!-- Header Section -->
+    <div class="cell header small-cell-block-container text-center">
+        <h1>Feast</h1>
     </div>
-    <div class="modal-body">
-      <p>Text Here. What ever we wANT</p>
+
+    <!-- Space has left in blank -->
+    <div class="grid-y grid-padding-y align-center-middle text-center">
+        <div class="cell small-12 large-12"></div>
+        <div class="cell small-12 large-12"></div>
+        <div class="cell small-12 large-12"></div>
     </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
+
+    <!-- Main Section -->
+    <div class="cell small-cell-block-container">
+      <div class="grid-x grid-padding-x align-center-middle text-center">
+        <div id="left" class="cell small-4 small-text callout secondary margin-0 padding-0 ">
+          Getting Random Restaurants Link with images, Italian, Chinese, Latin, etc
+          <button id="myBtn" class="success button radius bordered">Generate</button>
+        </div>
+        <div id="right" class="cell small-4 small-text callout warning margin-0 padding-1">
+          Searching by Categories: Link with images, Italian, Chinese, Latin, etc
+          <button id="myBtn" class="button"> Choose Category</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!------------------------------------------------------------------->
 
 <script src="./assets/js/script.js"></script>
 </body>
