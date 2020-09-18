@@ -24,29 +24,3 @@ window.onclick = function(event) {
   }
 }
 
-mapboxgl.accessToken ="pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow";
-
-    var map = new mapboxgl.Map({
-          container: 'map', // HTML container id
-          style: 'mapbox://styles/mapbox/streets-v9', // style URL
-          center: [-96, 37.8],
-          zoom: 3
-        })
-
-        map.addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true
-                },
-                trackUserLocation: true
-                })
-            );
-    
-    map.addControl(
-        new MapboxDirections({
-            accessToken: mapboxgl.accessToken,
-            unit: 'imperial',
-            profile: 'mapbox/driving'
-        }),
-        'top-left'
-        );

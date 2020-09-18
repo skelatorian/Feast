@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-    
-    
     <title>Document</title>
 </head>
 <body>
@@ -13,7 +11,8 @@
 
     <style>
         #map{
-            height: 300px;
+            height: 400px;
+            overflow: clip;
         }
     </style>
 
@@ -25,6 +24,16 @@ href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/ma
 type="text/css"
 />
     <script>
+
+        var lat = "-96";
+        var lon = "37.8";
+        var lat2 = "-92";
+        var lon2 = "37";
+         var dir = fetch("https://api.mapbox.com/directions/v5/mapbox/driving/" + lat + "," + lon + ";" + lat2 + "," + lon2 + "?access_token=pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow").then(function(response){
+            response.json().then(function(data){
+                console.log(data);
+            })
+        })
 
         mapboxgl.accessToken ="pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow";
 
@@ -42,7 +51,8 @@ type="text/css"
             new MapboxDirections({
                 accessToken: mapboxgl.accessToken,
                 unit: 'imperial',
-                profile: 'mapbox/driving'
+                profile: 'mapbox/driving',
+                directions: dir
             }),
             'top-left'
         );
@@ -57,5 +67,9 @@ type="text/css"
                 );
 
     </script>
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
 </body>
 </html>
