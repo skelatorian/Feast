@@ -44,8 +44,10 @@ type="text/css"
               zoom: 3 //starting zoom 
             });
 
-    
-            
+            //orlando marker
+            var marker = new mapboxgl.Marker() // Initialize a new marker
+            .setLngLat([-81.3792,28.5383]) // Marker [lng, lat] coordinates (Orlando)
+            .addTo(map); // Add the marker to the map
         
         map.addControl(
             new MapboxDirections({
@@ -66,8 +68,18 @@ type="text/css"
                     trackUserLocation: true
                     })
                 );
-
-
+                    
+        var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+        accessToken: mapboxgl.accessToken, // Set the access token
+        mapboxgl: mapboxgl, // Set the mapbox-gl instance
+        marker: false, // Do not use the default marker style
+        placeholder: 'Search for places in Berkeley', // Placeholder text for the search bar
+        bbox: [-81.3792, 28.5383, -81.5639, 28.3852], // Boundary for Orlando
+        proximity: {
+        longitude: -81.3792,
+        latitude: 28.5383
+        } // Coordinates of Orlando
+    });
 
     </script>
 
