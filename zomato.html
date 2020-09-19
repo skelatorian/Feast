@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="form">
+        <label>Please enter the Name of your city</label>
+        <input type="text" id="cityName"/>
+        <select name="categoryOp" id="category">
+            <option value="">Select one</option>
+            <option value="25">Chinese Food</option>
+            <option value="55">Latin Food</option>
+            <option value="136">Italian Food</option>
+        </select>
+        <button id="submit" type="submit">submit</button>
+    </form>
+    
+    <script>
+        //chinese: 25
+        //Latin: 55
+        //Italian: 136
+
+        var submitBtn = document.getElementById("form")
+        var cityEl = document.getElementById("cityName")
+        var categoryEl = document.getElementById("category") 
+
+        var getCity = function(event){
+            event.preventDefault();
+            var city = cityEl.value
+            cityEl.value = "";
+
+            var url = "https://developers.zomato.com/api/v2.1/locations?query=" + city + "&apikey=e081ab0396e5f94f0a589f30916a9208";
+            fetch(url).then(function(response){
+                response.json().then(function(data){
+                    cusine(data.location_suggestions[0].city_id);
+                });
+            });
+        }
+
+        var cusine = function(city){
+            var category = categoryEl.value
+            var url = "https://developers.zomato.com/api/v2.1/search?city_id=" + city + "&cuisines=" + category + "&apikey=e081ab0396e5f94f0a589f30916a9208";
+            fetch(url).then(function(response){
+                response.json().then(function(data){
+                    console.log(data);
+                });
+            });
+        }
+       
+        submitBtn.addEventListener("submit", getCity);
+    </script>
+</body>
+</html>
