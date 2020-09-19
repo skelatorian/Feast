@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Document</title>
+</head>
+<body>
+    <div id="map" class="map"></div>
+
+    <style>
+        #map{
+            height: 400px;
+            overflow: clip;
+        }
+    </style>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+            type="text/css"/>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script>
+        console.log("hola estoy aqui")
+
+        //var lat = "-96";
+        //var lon = "37.8";
+        var lat = "26.628787";
+        var lon = "-80.144246";
+        var lat2 = "26.629142"
+        var lon2 = "-80.138388";
+        var coordRoute = [];
+         var dir = fetch("https://api.mapbox.com/directions/v5/mapbox/driving/" + lon + "," + lat + ";" + lon2 + "," + lat2 + "?geometries=geojson&steps=true&access_token=pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow")
+         .then(function(response){
+            response.json().then(function(data){
+                coordRoute = data.routes[0].geometry.coordinates; // adding the information from request
+                console.log(coordRoute);
+                console.log(data);
+            });
+        });
+
+        mapboxgl.accessToken ="pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow";
+
+        var map = new mapboxgl.Map({
+              container: 'map', // HTML container id
+              style: 'mapbox://styles/mapbox/streets-v11', // style URL
+              center: [-80.144246, 26.628787], //starting position
+              zoom: 15 //starting zoom 
+            });
+
+    
+            
+        
+        map.addControl(
+            new MapboxDirections({
+                accessToken: mapboxgl.accessToken,
+                unit: 'imperial',
+                profile: 'mapbox/driving',
+                directions: dir
+            }),
+            'top-left'
+        );
+        
+        // Adding geolocate control to the map
+        map.addControl(
+                new mapboxgl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: true
+                    },
+                    trackUserLocation: true
+                    })
+                );
+        
+        // displaying the line for the route
+        map.on('load', function () {
+            map.addSource('route', {
+                'type': 'geojson',
+                'data': {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': coordRoute// adding coordinates given from the request
+                }
+                }
+            });
+
+            map.addLayer({
+                'id': 'route',
+                'type': 'line',
+                'source': 'route',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#84a8cc',
+                    'line-width': 8
+                }
+            });
+        });
+
+
+
+    </script>
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
+</body>
+</html>
