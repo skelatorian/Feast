@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Feast</title>
 </head>
@@ -12,7 +14,7 @@
   
   <div class="containerPage grid-y small-grid-frame">
     <!-- Header Section -->
-    <div class="cell header small-cell-block-container text-center callout bordered">
+    <div class="cell header small-cell-block-container text-center callout bordered" id="header">
         <h1>Feast</h1>
     </div>
 
@@ -24,38 +26,40 @@
     </div>
 
     <!-- Main Section -->
-    <div class="cell small-cell-block-container">
-      <div class="grid-x grid-padding-x align-center-middle text-center">
-        <div class="position-fixed-top cell leftBox small-4 medium-3 small-auto small-text callout primary bordered margin-0 padding-0 bordered ">
+    <div class="cell small-cell-block-container margin-0 padding-0">
+      <div class="grid-x grid-padding-x align-center-middle text-center margin-0 padding-0">
+        <div class="cell leftBox small-8 medium-3 small-text callout primary bordered margin-0 padding-0">
           
           <div class="card callout primary border-none" >
-            <div class="card-divider callout primary">
+            <div class="card-divider callout primary small-text">
               <h4> Ramdon Restaurants</h4>
             </div>
-            <div class="card-section width-50">
+            <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
               <p></p>
-              <p>The best Restaurant in the City</p>
-              <button id="generateBtn" class="success small button radius bordered">Generate!</button>
+              <p class="text-justify small-text">The best Restaurant in the City</p>
+              <button id="generateBtn" class="success small button rounded bordered">Generate!</button>
             </div>
           </div>
         </div>
       
-          <div class="cell small-1 medium-1 callout border-none "></div>
+          <div class="cell small-12 medium-1 show-for-medium"></div>
+          <div class="cell small-12 medium-1 show-for-small-only margin-1"></div>
+          <div class="cell small-12 medium-1 show-for-small-only margin-1"></div>
           
-          <div class=" position-fixed-top cell leftBox small-4 medium-3 small-auto small-text callout primary bordered margin-0 padding-0 bordered">
-            <div class="card callout primary border-none" >
-                <div class="card-divider callout primary">
-                  <h4>Choose your Style </h4>
+          <div class="cell leftBox small-8 medium-3 small-auto small-text callout primary bordered margin-0 padding-0">
+            <div class="card callout primary border-none " >
+                <div class="card-divider callout primary small-text">
+                  <h4>Choose your Style</h4>
                 </div>
-                <div class="card-section width-50">
+                <div class="card-section width-100 small-text">
                   <select name="categoryOp" id="category">
                     <option value="">Select one</option>
                     <option value="chinese">Chinese Food</option>
                     <option value="italian">Latin Food</option>
                     <option value="italian">Italian Food</option>
                 </select>
-                  <p>Select between Different categories</p>
-                  <button id="SearchBtn" class="success small button radius bordered">Search!</button>
+                  <p class="text-justify small-text width-100">Select between Different categories</p>
+                  <button id="SearchBtn" class="primary small button rounded bordered">Search!</button>
                 </div>
               </div>
           </div>
