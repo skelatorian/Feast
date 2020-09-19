@@ -25,7 +25,7 @@ var changeBg = function() {
 
 /*********************************** Execution *******************************************/
 
-setInterval(changeBg, 1000);
+setInterval(changeBg, 750);
 
 // adding listener for random restaurant
 
