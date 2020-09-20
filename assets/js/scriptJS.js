@@ -4,7 +4,7 @@
 
 /*********************************** Functions *******************************************/
 
-
+//Function to get the url query for the option selected whether Random or By category Restaurants
   var getQuery = function() {
     // grab repo name from url query string
     var queryString = document.location.search;
@@ -24,5 +24,5 @@
   /*********************************** Execution *******************************************/
 
   getQuery();
-  
+
   /*****************************************************************************************/
