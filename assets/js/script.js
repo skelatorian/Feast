@@ -1,36 +1,49 @@
 /*********************************** Variables *******************************************/
-var btnRandom = document.querySelector("#generateBtn");
-var btnCategory = document.querySelector("#SearchBtn");
-var divHeader = document.querySelector("#header");
-var doc = document.body;
-var i = 0;
+var popup = new Foundation.Reveal($('#myModal'));
 
 /*****************************************************************************************/
 
 /*********************************** Functions *******************************************/
 
-var changeBg = function() {
-  var color = ["#a5d2ff", "#aed6ff" , "#b7dbff", "#c0dfff", "#c9e4ff", 
-                "#d2e8ff", "#dbedff","#bedfff", "#d8ebff", "#f1f8ff"];  
-  divHeader.style.backgroundColor = color[i];
-  doc.style.backgroundColor = color[i];
-  i++;
+// Method to popup any message fron the application
+var displayModal = function(title, str){
+
+    $("#myModal").addClass("callout primary");
+    $(".title").addClass("callout alert").text(title);
+    $(".lead").text(str);
+    popup.open();
   
-  if(i > color.length - 1) {
-    i = 0;
-  }
 };
+
+
+// listener for clicking on button Generate and search in jquery
+$(".btn").on("click", function() {
+
+    //getting the attribute of the button clicked
+    var search = $(this).attr("attr");
+
+    //getting the value of the select tag
+    var category = document.querySelector("#category").value || "";
+    
+    if(search === "random"){
+      document.location.replace("./main.html?q=random");
+    }
+    else if (search === "category" && category){
+      document.location.replace("./main.html?q="+category);
+    }
+    else{
+      //Display modal for error
+      
+      displayModal("Category", "You must select one Category")
+      
+    }
+  });
+
 
 /*****************************************************************************************/
 
 /*********************************** Execution *******************************************/
 
-setInterval(changeBg, 750);
-
-// adding listener for random restaurant
-
-
-// adding listener for category restaurant
 
 
 /*****************************************************************************************/

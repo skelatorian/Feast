@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="form">
+        <label>Please enter the Name of your city</label>
+        <input type="text" id="cityName"/>
+        <select name="categoryOp" id="category">
+            <option value="">Select one</option>
+            <option value="25">Chinese Food</option>
+            <option value="55">Latin Food</option>
+            <option value="136">Italian Food</option>
+        </select>
+        <button id="submit" type="submit">submit</button>
+    </form>
+    <div id="container"></div>
+    
+    <!--randojs for randomizations-->
+    <script src="https://randojs.com/2.0.0.js"></script>
+    <script>
+        //chinese: 25
+        //Latin: 55
+        //Italian: 136
+
+        var submitBtn = document.getElementById("form");
+        var cityEl = document.getElementById("cityName");
+        var categoryEl = document.getElementById("category");
+        var containerEl = document.getElementById("container");
+
+        var getCity = function(event){
+            event.preventDefault();
+            var city = cityEl.value;
+            cityEl.value = "";
+
+            var url = "https://developers.zomato.com/api/v2.1/locations?query=" + city + "&apikey=e081ab0396e5f94f0a589f30916a9208";
+            fetch(url).then(function(response){
+                response.json().then(function(data){
+                    cusine(data.location_suggestions[0].city_id);
+                });
+            });
+        }
+
+        var cusine = function(city){
+            var category = categoryEl.value;
+            var url = "https://developers.zomato.com/api/v2.1/search?city_id=" + city + "&cuisines=" + category + "&apikey=e081ab0396e5f94f0a589f30916a9208";
+            fetch(url).then(function(response){
+                response.json().then(function(data){
+                    console.log(data.restaurants);
+                    shuffle(data.restaurants);
+                });
+            });
+        }
+
+        var shuffle = function(restaurants) {
+            var currentIndex = restaurants.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+            
+              // Pick a remaining element...
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex -= 1;
+            
+              // And swap it with the current element.
+              temporaryValue = restaurants[currentIndex];
+              restaurants[currentIndex] = restaurants[randomIndex];
+              restaurants[randomIndex] = temporaryValue;
+            }
+            display(restaurants);
+            return restaurants;
+        }
+
+        var display = function(restaurants){
+            var name = document.createElement("h3");
+            name.innerHTML = restaurants[0].restaurant.name;
+            containerEl.appendChild(name);
+
+            
+            
+            
+            
+
+        }
+       
+        submitBtn.addEventListener("submit", getCity);
+    </script>
+</body>
+</html>
