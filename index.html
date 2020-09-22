@@ -7,16 +7,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Feast</title>
 </head>
 <body>
+
+  <!-- Header Section -->
+
+  <div class="title-bar" data-responsive-toggle="menu-responsive" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle="menu-responsive"></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+  
+  <div class="top-bar" id="menu-responsive" data-animate="hinge-in-from-top spin-out">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text margin-0 padding-0 small-text" style="font-family: 'Tangerine', cursive; font-size: 3vw;">Feast!</li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input id="citySearch" type="search" placeholder="City"/></li>
+        <li><button type="button" class="btn small button rounded" attr="city" >Search</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- End Header Section -->
+
   <!-- Container-->
   <div class="containerPage grid-y small-grid-frame">
     <!-- Header Section -->
-    <div class="cell header small-cell-block-container text-center callout bordered" id="header">
+
+    <!-- <div class="cell header small-cell-block-container text-center callout bordered" id="header">
         <h1>Feast</h1>
-    </div>
+    </div> -->
     <!-- End Header Section -->
 
     <!-- Space has left in blank -->
@@ -38,7 +67,7 @@
               <h4> Random Restaurants</h4>
             </div>
             <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
-              <p></p>
+              <!-- <p></p> -->
               <p class="text-justify small-text">The best Restaurant in the City</p>
               <button attr="random" class="btn success small button rounded bordered" type="button">Generate!</button>
             </div>
@@ -86,7 +115,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-
+   <!-- Ends Modal-->
 
 
 <!-- jQuery Libraries-->
@@ -101,6 +130,6 @@ crossorigin="anonymous"></script>
   <!-- Local Script -->
 <script src="./assets/js/script.js"></script>
 <!-- Local Script for Background-->
-<script src="./assets/js/bgColor.js"></script>
+<!-- <script src="./assets/js/bgColor.js"></script> -->
 </body>
 </html>

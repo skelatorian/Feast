@@ -3,3 +3,9 @@ body {
   background-color: #f1f8ff;
 };
 
+.menu-text,  
+.menu-text :nth-of-type(even), 
+.menu-text :nth-of-type(even){
+  font-family: 'Tangerine', cursive;
+  color: #34df50;
+};
