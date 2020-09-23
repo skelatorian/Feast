@@ -29,7 +29,7 @@ $(".btn").on("click", function() {
     
     if(search === "city"){
       if (city) {
-        document.location.replace("./main.html?q=city");
+        document.location.replace("./main.html?q=" + city);
       }
       else{
         //Display modal for error
