@@ -71,25 +71,50 @@
               restaurants[randomIndex] = temporaryValue;
             }
             display(restaurants);
-            
+            return restaurants;
         }
 
         var display = function(data){
             console.log(data)
+            var i = 0;
+            while(i<data.length){
+                containerEl.innerHTML = "";
 
-            var title = document.createElement("h3");
-            title.innerHTML = data[0].name;
-            containerEl.appendChild(title);
-            
-            var img = document.createElement("img");
-            img.setAttribute("src", data[0].image_url);
-            img.setAttribute("alt", data[0].name);
-            containerEl.appendChild(img);
-            
-            var address = document.createElement("div");
-            address.innerHTML = data[0].location.address1 + ' ' + data[0].location.city + ', ' + data[0].location.state;
-            containerEl.appendChild(address);
+                var title = document.createElement("h3");
+                title.innerHTML = data[i].name;
+                containerEl.appendChild(title);
+                
+                var img = document.createElement("img");
+                img.setAttribute("src", data[i].image_url);
+                img.setAttribute("alt", data[i].name);
+                containerEl.appendChild(img);
+                
+                var address = document.createElement("div");
+                address.innerHTML = data[i].location.address1 + ' ' + data[i].location.city + ', ' + data[i].location.state;
+                containerEl.appendChild(address);
 
+                var buttonDiv = document.createElement("div");
+                containerEl.appendChild(buttonDiv);
+
+                var noBtn = document.createElement("button")
+                noBtn.setAttribute("id", "noBtn");
+                noBtn.innerHTML = "No";
+                buttonDiv.appendChild(noBtn);
+
+                var yesBtn = document.createElement("button")
+                yesBtn.setAttribute("id", "yesBtn");
+                yesBtn.innerHTML = "yes";
+                buttonDiv.appendChild(yesBtn);
+
+                noBtn.addEventListener("click", function(){
+                    console.log("no");
+                    i++;
+                })
+                yesBtn.addEventListener("click", function(){
+                    console.log("yes");
+                    return;
+                })
+            }
         }
        
         submitBtn.addEventListener("submit", getCity);
