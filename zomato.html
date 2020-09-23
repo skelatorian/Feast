@@ -13,9 +13,9 @@
         <input type="text" id="cityName"/>
         <select name="categoryOp" id="category">
             <option value="">Select one</option>
-            <option value="25">Chinese Food</option>
-            <option value="55">Latin Food</option>
-            <option value="136">Italian Food</option>
+            <option value="chinese">Chinese Food</option>
+            <option value="latin">Latin Food</option>
+            <option value="italian">Italian Food</option>
         </select>
         <button id="submit" type="submit">submit</button>
     </form>
@@ -36,12 +36,20 @@
         var getCity = function(event){
             event.preventDefault();
             var city = cityEl.value;
+            var category = categoryEl.value;
             cityEl.value = "";
 
-            var url = "https://developers.zomato.com/api/v2.1/locations?query=" + city + "&apikey=e081ab0396e5f94f0a589f30916a9208";
-            fetch(url).then(function(response){
+            var url = "https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + city;
+            fetch(url, /*{
+                headers: {
+                    mode: 'no-cors',
+                    'Content-Type': 'application/json',
+                    Authorization: "Bearer quJaFb-FDw5HkLiT6j-2CqDL9sFMrO7tynIDs8bCt1-rK52VQ_6wBzuYZdIVEk2NqYZ7ipd5grBnQIH6PIHpmYSMsAaq7xVFrZJtQDQu9rspQ2QWj_Lbwc15GZRqX3Yx"
+                }
+            }*/
+            ).then(function(response){
                 response.json().then(function(data){
-                    cusine(data.location_suggestions[0].city_id);
+                    console.log(data);
                 });
             });
         }
@@ -60,14 +68,14 @@
         var shuffle = function(restaurants) {
             var currentIndex = restaurants.length, temporaryValue, randomIndex;
 
-            // While there remain elements to shuffle...
+            // While there remain elements to shuffle
             while (0 !== currentIndex) {
             
-              // Pick a remaining element...
+              // Pick a remaining element
               randomIndex = Math.floor(Math.random() * currentIndex);
               currentIndex -= 1;
             
-              // And swap it with the current element.
+              // And swap it with the current element
               temporaryValue = restaurants[currentIndex];
               restaurants[currentIndex] = restaurants[randomIndex];
               restaurants[randomIndex] = temporaryValue;
@@ -76,12 +84,16 @@
             return restaurants;
         }
 
-        var display = function(restaurants){
+        var display = function(data){
             var name = document.createElement("h3");
-            name.innerHTML = restaurants[0].restaurant.name;
+            name.innerHTML = data[0].restaurant.name;
             containerEl.appendChild(name);
 
+            var photo = document.createElement("img");
             
+            photo.setAttribute("src", data[0].restaurant.photos_url);
+            photo.setAttribute("alt", data[0].restaurant.name);
+            containerEl.appendChild(photo);
             
             
             
