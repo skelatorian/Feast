@@ -39,31 +39,21 @@
             var category = categoryEl.value;
             cityEl.value = "";
 
-            var url = "https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + city;
-            fetch(url, /*{
+            var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + city;
+            fetch(url, {
                 headers: {
                     mode: 'no-cors',
                     'Content-Type': 'application/json',
                     Authorization: "Bearer quJaFb-FDw5HkLiT6j-2CqDL9sFMrO7tynIDs8bCt1-rK52VQ_6wBzuYZdIVEk2NqYZ7ipd5grBnQIH6PIHpmYSMsAaq7xVFrZJtQDQu9rspQ2QWj_Lbwc15GZRqX3Yx"
                 }
-            }*/
+            }
             ).then(function(response){
                 response.json().then(function(data){
-                    console.log(data);
+                    shuffle(data.businesses);
                 });
             });
         }
 
-        var cusine = function(city){
-            var category = categoryEl.value;
-            var url = "https://developers.zomato.com/api/v2.1/search?city_id=" + city + "&cuisines=" + category + "&apikey=e081ab0396e5f94f0a589f30916a9208";
-            fetch(url).then(function(response){
-                response.json().then(function(data){
-                    console.log(data.restaurants);
-                    shuffle(data.restaurants);
-                });
-            });
-        }
 
         var shuffle = function(restaurants) {
             var currentIndex = restaurants.length, temporaryValue, randomIndex;
@@ -81,22 +71,24 @@
               restaurants[randomIndex] = temporaryValue;
             }
             display(restaurants);
-            return restaurants;
+            
         }
 
         var display = function(data){
-            var name = document.createElement("h3");
-            name.innerHTML = data[0].restaurant.name;
-            containerEl.appendChild(name);
+            console.log(data)
 
-            var photo = document.createElement("img");
+            var title = document.createElement("h3");
+            title.innerHTML = data[0].name;
+            containerEl.appendChild(title);
             
-            photo.setAttribute("src", data[0].restaurant.photos_url);
-            photo.setAttribute("alt", data[0].restaurant.name);
-            containerEl.appendChild(photo);
+            var img = document.createElement("img");
+            img.setAttribute("src", data[0].image_url);
+            img.setAttribute("alt", data[0].name);
+            containerEl.appendChild(img);
             
-            
-            
+            var address = document.createElement("div");
+            address.innerHTML = data[0].location.address1 + ' ' + data[0].location.city + ', ' + data[0].location.state;
+            containerEl.appendChild(address);
 
         }
        
