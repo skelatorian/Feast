@@ -9,3 +9,9 @@ body {
   font-family: 'Tangerine', cursive;
   color: #34df50;
 };
+
+
+.card-section p {
+  text-align: center;
+  font-size: larger;
+}
