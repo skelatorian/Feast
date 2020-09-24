@@ -41,10 +41,11 @@
 
             var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + city;
             fetch(url, {
+               // method: 'GET',
                 headers: {
                     mode: 'no-cors',
                     'Content-Type': 'application/json',
-                    Authorization: "Bearer quJaFb-FDw5HkLiT6j-2CqDL9sFMrO7tynIDs8bCt1-rK52VQ_6wBzuYZdIVEk2NqYZ7ipd5grBnQIH6PIHpmYSMsAaq7xVFrZJtQDQu9rspQ2QWj_Lbwc15GZRqX3Yx"
+                    Authorization: "Bearer FBJUiIhr9crDR0zCtpVvIKsvNbcaYM_vrhNU2lSEMmmckma8-gPP2Nua7Lx3AFGzQ6XzMwwRrKFR_TF0ZosmSJ7PvcjpnDr76tQj5uLZt6aYBGAlnIiiKMXyIYdqX3Yx"
                 }
             }
             ).then(function(response){
@@ -54,7 +55,12 @@
             });
         }
 
+        // var testGlobalArray = {};
 
+        // testGlobalArray[''] = 
+
+        
+        
         var shuffle = function(restaurants) {
             var currentIndex = restaurants.length, temporaryValue, randomIndex;
 
@@ -121,5 +127,3 @@
     </script>
 </body>
 </html>
-
-<!--test-->
