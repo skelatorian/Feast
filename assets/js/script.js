@@ -1,52 +1,67 @@
-// Get the modal
-var modal = document.getElementById("myModal");
+/*********************************** Variables *******************************************/
+var popup = new Foundation.Reveal($('#myModal'));
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+/*****************************************************************************************/
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+/*********************************** Functions *******************************************/
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+// Method to popup any message fron the application
+var displayModal = function(title, str){
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+    $("#myModal").addClass("callout primary");
+    $(".title").addClass("callout alert").text(title);
+    $(".lead").text(str);
+    popup.open();
+  
+};
 
-mapboxgl.accessToken ="pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow";
 
-    var map = new mapboxgl.Map({
-          container: 'map', // HTML container id
-          style: 'mapbox://styles/mapbox/streets-v9', // style URL
-          center: [-96, 37.8],
-          zoom: 3
-        })
+// listener for clicking on button Generate and search in jquery
+$(".btn").on("click", function() {
 
-        map.addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true
-                },
-                trackUserLocation: true
-                })
-            );
+    //getting the attribute of the button clicked whether it is random, searchin by city or category
+    var search = $(this).attr("attr");
+
+    //getting the value of the select tag
+    var category = document.querySelector("#category").value || "";
+    var city = document.querySelector("#citySearch").value;
+    var city2 = document.querySelector("#citySearch2").value;
     
-    map.addControl(
-        new MapboxDirections({
-            accessToken: mapboxgl.accessToken,
-            unit: 'imperial',
-            profile: 'mapbox/driving'
-        }),
-        'top-left'
-        );
+    if(search === "city"){
+      if (city) {
+        document.location.replace("./main.html?q=" + city);
+      }
+      else{
+        //Display modal for error
+      
+        displayModal("Search by City", "You must enter a City");
+      }
+
+    } 
+    else if (search === "category"){
+      if (category && city2){
+        document.location.replace("./main.html?q=" + city2 + '=' + category);
+      }
+      else{
+      //Display modal for error
+      
+      displayModal("Search by Category", "You must select one Category and enter your city");
+      
+      }
+    }
+    
+  });
+
+  $(document).ready(function() {
+    $(document).foundation();
+  });
+
+
+/*****************************************************************************************/
+
+/*********************************** Execution *******************************************/
+
+
+
+/*****************************************************************************************/
