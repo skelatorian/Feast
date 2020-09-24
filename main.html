@@ -27,6 +27,12 @@
         <li class="menu-text margin-0 padding-0 small-text" style="font-family: 'Tangerine', cursive; font-size: 34px;">Feast!</li>
         <li><a href="#">About Us</a></li> 
         <li><a href="#">Contact Us</a></li>
+        <li>
+          <a href="#">My Restaurants</a>
+          <ul class="menu vertical" id="targetMyRestaurant">
+            <li><a href="#">One</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
     <div class="top-bar-right">
@@ -53,37 +59,29 @@
     
       <div class="grid-y grid-padding-y align-center-middle text-center">
         <div id="target-title-restaurant" class="cell small-8 medium-10 small-text callout primary bordered margin-0 padding-0">
-          <h1>Restaurant</h1>
+          <h1>Title for the restaurant</h1>
         </div>
       </div>
       <!-- Boxes-->
       <div class="grid-x grid-padding-x align-center-middle text-center margin-0 padding-0">
 
         <!-- Box #1 for photos-->
-        <div class="cell leftBox small-8 medium-5 small-text callout primary bordered margin-0 padding-0">          
+        <div class="cell leftBox small-8 medium-10 small-text callout primary bordered margin-0 padding-0"> 
+
           <div class="card callout primary border-none" >
             <div class="card-divider callout primary small-text">
               <h4 id="name">Photos</h4>
             </div>
-            <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
-              <p></p>
-              <p class="text-justify small-text">some photos</p>
-              
-            </div>
-          </div>
-        </div> 
-        
-        <!-- Box #2 for menu-->
-        <div class="cell rightBox small-8 medium-5 small-text callout primary bordered margin-0 padding-0">
-            
-          <div class="card callout primary border-none" >
-            <div class="card-divider callout primary small-text">
-              <h4 id="name">Menu</h4>
+            <div class="card-image" id="imageRestaurant">
+              <img src=""> <!-- some images-->
             </div>
             <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
-              <p></p>
-              <p class="text-justify small-text">some text for menus</p>
-              
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0">Address: </p>
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0" id="address">some photos</p>
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0"></p>
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0">Reviews</p>
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0" id="reviwes">some photos</p>
+              <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0" id="url">URL: </p>
             </div>
           </div>
         </div>
