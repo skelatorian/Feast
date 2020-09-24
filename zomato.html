@@ -32,6 +32,7 @@
         var cityEl = document.getElementById("cityName");
         var categoryEl = document.getElementById("category");
         var containerEl = document.getElementById("container");
+        var index = 0;                                               //Issue 3. Adding a global variable to control the access to array
 
         var getCity = function(event){
             event.preventDefault();
@@ -41,11 +42,10 @@
 
             var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + category + "&location=" + city;
             fetch(url, {
-               // method: 'GET',
                 headers: {
                     mode: 'no-cors',
                     'Content-Type': 'application/json',
-                    Authorization: "Bearer FBJUiIhr9crDR0zCtpVvIKsvNbcaYM_vrhNU2lSEMmmckma8-gPP2Nua7Lx3AFGzQ6XzMwwRrKFR_TF0ZosmSJ7PvcjpnDr76tQj5uLZt6aYBGAlnIiiKMXyIYdqX3Yx"
+                    Authorization: "Bearer quJaFb-FDw5HkLiT6j-2CqDL9sFMrO7tynIDs8bCt1-rK52VQ_6wBzuYZdIVEk2NqYZ7ipd5grBnQIH6PIHpmYSMsAaq7xVFrZJtQDQu9rspQ2QWj_Lbwc15GZRqX3Yx"
                 }
             }
             ).then(function(response){
@@ -55,12 +55,7 @@
             });
         }
 
-        // var testGlobalArray = {};
 
-        // testGlobalArray[''] = 
-
-        
-        
         var shuffle = function(restaurants) {
             var currentIndex = restaurants.length, temporaryValue, randomIndex;
 
@@ -76,14 +71,16 @@
               restaurants[currentIndex] = restaurants[randomIndex];
               restaurants[randomIndex] = temporaryValue;
             }
-            display(restaurants);
+            display(restaurants, index);   //Issue 2. sending index argument to the array
             return restaurants;
         }
 
-        var display = function(data){
-            console.log(data)
+        /* var display = function(data){
+            console.log(data);
+            console.log(data.length);
             var i = 0;
             while(i<data.length){
+                console.log("i= " +i);
                 containerEl.innerHTML = "";
 
                 var title = document.createElement("h3");
@@ -121,7 +118,55 @@
                     return;
                 })
             }
-        }
+        } */
+
+        var display = function(data, posArray){  //Issue 1. Changed the parameters adding the index
+            console.log(data);
+            console.log(data.length);
+            var i = posArray;
+          
+                console.log("i= " +i);
+                containerEl.innerHTML = "";
+
+                var title = document.createElement("h3");
+                title.innerHTML = data[i].name;
+                containerEl.appendChild(title);
+                
+                var img = document.createElement("img");
+                img.setAttribute("src", data[i].image_url);
+                img.setAttribute("alt", data[i].name);
+                containerEl.appendChild(img);
+                
+                var address = document.createElement("div");
+                address.innerHTML = data[i].location.address1 + ' ' + data[i].location.city + ', ' + data[i].location.state;
+                containerEl.appendChild(address);
+
+                var buttonDiv = document.createElement("div");
+                containerEl.appendChild(buttonDiv);
+
+                var noBtn = document.createElement("button")
+                noBtn.setAttribute("id", "noBtn");
+                noBtn.innerHTML = "No";
+                buttonDiv.appendChild(noBtn);
+
+                var yesBtn = document.createElement("button")
+                yesBtn.setAttribute("id", "yesBtn");
+                yesBtn.innerHTML = "yes";
+                buttonDiv.appendChild(yesBtn);
+
+                noBtn.addEventListener("click", function(){
+                    console.log("no");
+                    i++;
+                    index++
+                    display(data, index);
+                    console.log(index);
+                });
+                yesBtn.addEventListener("click", function(){
+                    console.log("yes");
+                    return;
+                });
+            }
+        
        
         submitBtn.addEventListener("submit", getCity);
     </script>
