@@ -35,12 +35,7 @@
         </li>
       </ul>
     </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><input id="citySearch" type="search" placeholder="City"/></li>
-        <li><button type="button" class="btn small button rounded" attr="city" >Search</button></li>
-      </ul>
-    </div>
+    
   </div>
 </header>
   <!-- End Header Section -->
@@ -63,13 +58,14 @@
       <div class="grid-x grid-padding-x align-center-middle text-center margin-0 padding-0 height-100">
         <div class="cell leftBox small-8 medium-3 small-text callout primary bordered margin-0 padding-0 height-100">
           
-          <div class="card callout primary border-none" >
-            <div class="card-divider callout primary small-text">
-              <h4>Generate a Restaurant</h4>
+          <div class="card callout primary border-none cardy" >
+            <div class="card-divider callout primary small-text align-center">
+              <h4>Spice things up!</h4>
             </div>
             <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
-              <p class="text-justify small-text">Click the button to view a restaurant!</p> <!--NEEDS TO BE CENTERED-->
-              <button attr="random" class="btn success small button rounded bordered" type="button">Surprise Me!</button>
+              <p class="text-center small-text">Enter your city and click the button to browse random restaurants!</p>
+              <input id="citySearch" type="search" placeholder="City"/> 
+              <button attr="city" class="btn success small button rounded bordered" type="button">Surprise Me!</button>
             </div>
           </div>
         </div>
@@ -79,12 +75,13 @@
           <div class="cell small-12 medium-1 show-for-small-only margin-1"></div>
           
           <div class="cell rightBox small-8 medium-3 small-auto small-text callout primary bordered margin-0 padding-0">
-            <div class="card callout primary border-none " >
-                <div class="card-divider callout primary small-text">
+            <div class="card callout primary border-none cardy" >
+                <div class="card-divider callout primary small-text align-center">
                   <h4>Feeling Picky?</h4>
                 </div>
                 <div class="card-section width-100 small-text">
-                  <p class="text-justify small-text width-100">Select a category from the dropdown list below!</p>
+                  <p class="text-center small-text width-100">Enter your city and select a category from the dropdown list below!</p>
+                  <input id="citySearch2" type="search" placeholder="City"/> 
                   <select name="categoryOp" id="category">
                     <option value="">Select one</option>
                     <option value="chinese">Chinese Food</option>

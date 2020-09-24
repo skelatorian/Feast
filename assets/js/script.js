@@ -26,6 +26,7 @@ $(".btn").on("click", function() {
     //getting the value of the select tag
     var category = document.querySelector("#category").value || "";
     var city = document.querySelector("#citySearch").value;
+    var city2 = document.querySelector("#citySearch2").value;
     
     if(search === "city"){
       if (city) {
@@ -37,17 +38,15 @@ $(".btn").on("click", function() {
         displayModal("Search by City", "You must enter a City");
       }
 
-    } else if(search === "random"){
-      document.location.replace("./main.html?q=random");
-    }
+    } 
     else if (search === "category"){
-      if (category){
-        document.location.replace("./main.html?q="+category);
+      if (category && city2){
+        document.location.replace("./main.html?q=" + city2 + '=' + category);
       }
       else{
       //Display modal for error
       
-      displayModal("Search by Category", "You must select one Category");
+      displayModal("Search by Category", "You must select one Category and enter your city");
       
       }
     }
