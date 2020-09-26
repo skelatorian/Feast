@@ -7,11 +7,12 @@ var popup = new Foundation.Reveal($('#myModal'));
 /*********************************** Functions *******************************************/
 
 // Method to popup any message fron the application
-var displayModal = function(title, str){
+var displayModal = function(title, str, bgcolor){
 
     $("#myModal").addClass("callout primary");
-    $(".title").addClass("callout alert").text(title);
+    $(".title").addClass("callout " + bgcolor).text(title);
     $(".lead").text(str);
+    $(".targetING").
     popup.open();
   
 };
@@ -35,7 +36,7 @@ $(".btn").on("click", function() {
       else{
         //Display modal for error
       
-        displayModal("Search by City", "You must enter a City");
+        displayModal("Search by City", "You must enter a City", "alert");
       }
 
     } 
@@ -46,7 +47,7 @@ $(".btn").on("click", function() {
       else{
       //Display modal for error
       
-      displayModal("Search by Category", "You must select one Category and enter your city");
+      displayModal("Search by Category", "You must select one Category and enter your city", "alert");
       
       }
     }

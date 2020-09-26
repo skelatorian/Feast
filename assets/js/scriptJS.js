@@ -1,12 +1,17 @@
 /*********************************** Variables *******************************************/
 var index = 0;
-/*****************************************************************************************/
+
 var titleEl = document.getElementById("target-title-restaurant");
 var imgEl = document.getElementById("imageRestaurant");
+var addressTxt = document.getElementById("targetAddress");
 var addressEl = document.getElementById("address");
+var urlTxt = document.getElementById("targetURL");
 var urlEl = document.getElementById("url");
+var ratingTxt = document.getElementById("targetRating");
+var rating = document.getElementById("rating");
 var noBtn = document.getElementById("no");
 var yesBtn = document.getElementById("yes");
+var dataRestaurant = [];
 /*********************************** Functions *******************************************/
 
 //Function to get the url query for the option selected whether Random or By category Restaurants
@@ -49,7 +54,8 @@ var yesBtn = document.getElementById("yes");
             }
             ).then(function(response){
                 response.json().then(function(data){
-                    shuffle(data.businesses);
+                  dataRestaurant = shuffle(data.businesses);
+                  
                 });
             });
 
@@ -78,27 +84,52 @@ var yesBtn = document.getElementById("yes");
     }
     display(restaurants, index);   //Issue 2. sending index argument to the array
     return restaurants;
-}
+};
+
+var stylingFunction =function(element, type){
+  element.style.fontFamily = 'Tangerine, cursive';
+  if(type == 1){
+    element.style.fontSize = "48px";
+  }
+  else{
+    element.style.fontSize = "34px";
+  }
+  
+};
 
   var display = function(data, posArray){
-    console.log(data);
-    console.log(data.length);
+   // console.log(data);
+    //console.log(data.length);
     var i = posArray;
 
+    stylingFunction(titleEl,1);
     titleEl.innerHTML = data[i].name;
 
     imgEl.innerHTML = "<img src='" + data[i].image_url + "'>";
 
-    addressEl.innerHTML = "Address: " + data[i].location.display_address[0] + " " + data[i].location.display_address[1];
+    stylingFunction(addressTxt,2);
+    addressEl.innerHTML = data[i].location.display_address[0] + " " + data[i].location.display_address[1];
 
-    urlEl.innerHTML = "URL: <a href='" + data[i].url + "'>"+ data[i].url +"</a>" 
+
+    stylingFunction(ratingTxt,2);
+    rating.innerHTML = "<img style='width:15%' src='./assets/images/" + Math.floor(parseFloat(data[i].rating)) + ".png'>";
+
+    stylingFunction(urlTxt,2);
+    urlEl.innerHTML = "<a href='" + data[i].url.trim() + "' target='_blank'>"+ data[i].url.trim() +"</a>" 
   
     noBtn.addEventListener("click", function(){
-      console.log("no");
-      i++;
-      index++
-      display(data, index);
-      console.log(index);
+     
+      if(data){
+        if(index != (data.length-1)){
+          index++;
+        }
+        else {
+          index = 0;
+        }
+        console.log(index);
+         display(data, index);
+      }
+      //console.log(index);
     });
     yesBtn.addEventListener("click", function(){
       console.log("yes");
