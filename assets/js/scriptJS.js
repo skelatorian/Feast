@@ -135,7 +135,7 @@ var stylingFunction =function(element, type){
       console.log("yes");
       return;
   });
-  }
+  };
 
   /*****************************************************************************************/
 
