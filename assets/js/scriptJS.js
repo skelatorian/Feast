@@ -12,7 +12,15 @@ var rating = document.getElementById("rating");
 var noBtn = document.getElementById("no");
 var yesBtn = document.getElementById("yes");
 var dataRestaurant = [];
+//Array of Objects for localStores data
+var list = JSON.parse(localStorage.getItem('restaurant')) || [];
 /*********************************** Functions *******************************************/
+
+//Function to start the code
+function start() {
+  loadRestaurants();
+  
+}
 
 //Function to get the url query for the option selected whether Random or By category Restaurants
   var getQuery = function() {
@@ -97,6 +105,38 @@ var stylingFunction =function(element, type){
   
 };
 
+// load my Restaurants saved in LocalStore
+var loadRestaurants = function(){
+
+  ulContainer = document.querySelector("#targetMyRestaurant");          //Getting the element fo My Restaurants
+  ulContainer.innerHTML ="";
+
+  if(list){
+    for(var i = 0; i < list.length; i++){
+        var liElement =document.createElement("li");
+        liElement.innerHTML = "<a href='javascript:search("+list[i].lat +","+ list[i].lon + ");' coord='"+list[i].lat + "," + list[i].lon + "'>"+list[i].name+"</a>";  
+        ulContainer.appendChild(liElement);  
+      }       
+    }
+};
+
+//Function to save in localStore restaurants (just the name and latitude and longitud)
+var saveRestaurant = function(dataObj){
+
+  var objRestaurant ={
+    name: dataObj.name,
+    lat: dataObj.coordinates.latitude,
+    lon: dataObj.coordinates.longitude,
+};
+  //pushing the information into the array of objects
+  list.push(objRestaurant);
+
+  localStorage.setItem("restaurant",JSON.stringify(list));
+
+  loadRestaurants();
+
+};
+
   var display = function(data, posArray){
    // console.log(data);
     //console.log(data.length);
@@ -132,8 +172,10 @@ var stylingFunction =function(element, type){
       //console.log(index);
     });
     yesBtn.addEventListener("click", function(){
-      console.log("yes");
-      return;
+      //console.log("yes");
+     // return;
+     saveRestaurant(data[index]);
+     //displayAgreement(data[index]);
   });
   };
 
@@ -141,13 +183,13 @@ var stylingFunction =function(element, type){
 
   /*********************************** Execution *******************************************/
 
-  getQuery();
-
+  start();                                    //initials Settings 
   
-  $(document).ready(function() {
+
+  $(document).ready(function() {              // Initial setting for modal or reveal 
     $(document).foundation();
   });
 
-
+  getQuery();                                 //Getting the url query from index.html
 
   /*****************************************************************************************/

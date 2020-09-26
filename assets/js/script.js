@@ -1,10 +1,32 @@
 /*********************************** Variables *******************************************/
 var popup = new Foundation.Reveal($('#myModal'));
-
+//Array of Objects for localStores data
+var list = JSON.parse(localStorage.getItem('restaurant')) || [];
 
 /*****************************************************************************************/
 
 /*********************************** Functions *******************************************/
+
+//Function to start the code
+function start() {
+  loadRestaurants();
+  
+}
+
+// load my Restaurants saved in LocalStore
+var loadRestaurants = function(){
+
+  ulContainer = document.querySelector("#targetMyRestaurant");          //Getting the element fo My Restaurants
+  ulContainer.innerHTML ="";
+
+  if(list){
+    for(var i = 0; i < list.length; i++){
+        var liElement =document.createElement("li");
+        liElement.innerHTML = "<a href='javascript:search("+list[i].lat +","+ list[i].lon + ");' coord='"+list[i].lat + "," + list[i].lon + "'>"+list[i].name+"</a>";  
+        ulContainer.appendChild(liElement);  
+      }       
+    }
+};
 
 // Method to popup any message fron the application
 var displayModal = function(title, str, bgcolor){
@@ -63,6 +85,6 @@ $(".btn").on("click", function() {
 
 /*********************************** Execution *******************************************/
 
-
+start();
 
 /*****************************************************************************************/
