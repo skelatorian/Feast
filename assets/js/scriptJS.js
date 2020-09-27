@@ -1,4 +1,6 @@
 /*********************************** Variables *******************************************/
+var popup = new Foundation.Reveal($('#myModal'));
+
 var index = 0;
 
 var titleEl = document.getElementById("target-title-restaurant");
@@ -105,6 +107,52 @@ var stylingFunction =function(element, type){
   
 };
 
+var initMap = function(map, coordinates){
+    //styling the container for the map
+    map.style.height = "400px";
+    map.style. overflow = "clip"
+    
+    //geting the map
+    mapboxgl.accessToken ="pk.eyJ1IjoiamVzcGkxMTYiLCJhIjoiY2tmN2hraTBsMDJoMDJycGMyZnMwZmFnbiJ9.p1H_JtUf2Bl_KtGuPNEcow";
+    var map = new mapboxgl.Map({
+        container: map.getAttribute('id'),//'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [coordinates.longitude, coordinates.latitude],//[12.550343, 55.665957],
+        zoom: 15
+    });
+    
+    var marker = new mapboxgl.Marker()
+      .setLngLat([coordinates.longitude, coordinates.latitude])//([12.550343, 55.665957])
+      .addTo(map);
+}
+
+// Function to display the Restaurant Selected
+var displayAgreement = function (dataObj) {
+
+  //first display a modal
+
+  var imgOk = $("<img>");
+  imgOk.attr("src","./assets/images/ok.png").attr("alt", "ok").attr("style", "width:30%;");
+  
+  $("#myModal").addClass("callout primary text-center");
+  $(".title").addClass("callout success small-text text-center").attr("style","font-family:Tangerine, cursive; font-size:34px").text("You did it. Amazing!");
+  $(".lead").attr("style","font-family:Tangerine, cursive; font-size:34px").text("Restaurant. "+dataObj.name);
+  $("#targetImg").replaceWith(imgOk);
+  popup.open();
+
+  // clean the container an display the information about the restaurant
+
+  //disable yes and no buttons
+  noBtn.setAttribute("class", "alert small button rounded bordered disabled");
+  noBtn.setAttribute("disabled", "true");
+  yesBtn.setAttribute("class", "success small button rounded bordered disabled");
+  yesBtn.setAttribute("disabled", "true");
+  var containerMap = document.querySelector("#targetMap");
+  initMap(containerMap, dataObj.coordinates);
+
+
+};
+
 // load my Restaurants saved in LocalStore
 var loadRestaurants = function(){
 
@@ -175,7 +223,7 @@ var saveRestaurant = function(dataObj){
       //console.log("yes");
      // return;
      saveRestaurant(data[index]);
-     //displayAgreement(data[index]);
+     displayAgreement(data[index]);
   });
   };
 

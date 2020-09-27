@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css" integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css" integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css"/>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Feast</title>
 </head>
@@ -77,6 +79,7 @@
               <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0" id="targetURL">URL: </p>
               <p class="text-justify small-text width-100  callout primary border-none margin-0 padding-0" id="url"></p>
             </div>
+            <div class="card-divider callout primary small-text  border-none margin-0 padding-0" id="targetMap"></div>
           </div>
         </div>
 
@@ -105,6 +108,17 @@
   </div>
   <!-- End Container -->
 
+    <!--Modal-->
+    <div class="reveal" id="myModal" data-reveal data-overlay="true">
+      <h1 class="title"></h1>
+      <p id=targetImg></p>
+      </p> <p class="lead"></p>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+     <!-- Ends Modal-->
+
   
 
 <!-- jQuery Libraries-->
@@ -115,6 +129,9 @@ crossorigin="anonymous"></script>
 
 <!-- Compressed JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
+ <!-- MapBox API -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 
   <!-- Local Script -->
 <script src="./assets/js/scriptJS.js"></script>
