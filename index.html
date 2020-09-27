@@ -24,7 +24,7 @@
   <div class="top-bar header" id="menu-responsive" data-animate="hinge-in-from-top spin-out">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text margin-0 padding-0 small-text" style="font-family: 'Tangerine', cursive; font-size: 34px;">Feast!</li>
+        <li id="brandTitle" class="menu-text margin-0 padding-0 small-text" style="font-family: 'Tangerine', cursive; font-size: 34px;">Feast!</li>
         <li><a href="#about-us">About Us</a></li>
         <li><a href="#contact-us">Contact</a></li>
         <li>
@@ -58,7 +58,7 @@
           
           <div class="card callout primary border-none cardy" >
             <div class="card-divider callout primary small-text align-center">
-              <h4>Spice things up!</h4>
+              <h4 id="titleCity">Spice things up!</h4>
             </div>
             <div class="card-section small-text width-100 margin-top-1 margin-bottom-1">
               <p class="text-center small-text">Enter your city and click the button to browse random restaurants!</p>
@@ -75,7 +75,7 @@
           <div class="cell rightBox small-8 medium-3 small-auto small-text callout primary bordered margin-0 padding-0">
             <div class="card callout primary border-none cardy" >
                 <div class="card-divider callout primary small-text align-center">
-                  <h4>Feeling Picky?</h4>
+                  <h4 id="titleCategory">Feeling Picky?</h4>
                 </div>
                 <div class="card-section width-100 small-text">
                   <p class="text-center small-text width-100">Enter your city and select a category from the dropdown list below!</p>
@@ -159,8 +159,8 @@
   <!--Modal-->
   <div class="reveal" id="myModal" data-reveal data-overlay="true">
     <h1 class="title"></h1>
-    <p class="lead"></p>
     <p id=targetImg></p>
+    </p> <p class="lead"></p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>

@@ -21,7 +21,6 @@ var list = JSON.parse(localStorage.getItem('restaurant')) || [];
 //Function to start the code
 function start() {
   loadRestaurants();
-  
 }
 
 //Function to get the url query for the option selected whether Random or By category Restaurants

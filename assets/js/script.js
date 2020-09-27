@@ -8,10 +8,27 @@ var list = JSON.parse(localStorage.getItem('restaurant')) || [];
 /*********************************** Functions *******************************************/
 
 //Function to start the code
-function start() {
+var start = function() {
   loadRestaurants();
+
+  var brand = document.getElementById("brandTitle");  
+  var title1 = document.getElementById("titleCity");
+  var title2 = document.getElementById("titleCategory");
+  stylingFunction(brand,1);
+  stylingFunction(title1,1);
+  stylingFunction(title2,1);
+};
+
+var stylingFunction =function(element, type){
+  element.style.fontFamily = 'Tangerine, cursive';
+  if(type == 1){
+    element.style.fontSize = "48px";
+  }
+  else{
+    element.style.fontSize = "34px";
+  }
   
-}
+};
 
 // load my Restaurants saved in LocalStore
 var loadRestaurants = function(){
@@ -31,11 +48,14 @@ var loadRestaurants = function(){
 // Method to popup any message fron the application
 var displayModal = function(title, str, bgcolor){
 
-    $("#myModal").addClass("callout primary");
-    $(".title").addClass("callout " + bgcolor).text(title);
-    $(".lead").text(str);
-    $(".targetING").
-    popup.open();
+  var imgOk = $("<img>");
+  imgOk.attr("src","./assets/images/x.png").attr("alt", "error").attr("style", "width:30%;");
+  
+  $("#myModal").addClass("callout primary text-center");
+  $(".title").addClass("callout success small-text text-center " + bgcolor).attr("style","font-family:Tangerine, cursive; font-size:34px").text(title);
+  $(".lead").attr("style","font-family:Tangerine, cursive; font-size:34px").text(str);
+  $("#targetImg").replaceWith(imgOk);
+  popup.open();
   
 };
 
