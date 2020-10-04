@@ -26,8 +26,12 @@ var stylingFunction =function(element, type){
   }
   else{
     element.style.fontSize = "34px";
-  }
-  
+  }  
+};
+
+// function generated dynamically for the list in the Dropdown menu
+var search = function(lat, lon){
+  document.location.replace("./savedRest.html?lat=" + lat + "&lon="+lon);
 };
 
 // load my Restaurants saved in LocalStore
