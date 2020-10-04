@@ -41,15 +41,11 @@ No Button continues to display others restaurant with addresses, rating for the 
 * Javier Espinosa [jespi116](http://github.com/jespi116)
 
 
-## License
-
-![v1](https://img.shields.io/static/v1?label=License&message=MIT&color=green&&style=plastic)
 
 
-## Screenshots
 
 
-### Inicial Mock-up 
+## Initial Mock-up 
 
 ![](./assets/images/landing-page-mockup.png)
 
@@ -57,15 +53,18 @@ No Button continues to display others restaurant with addresses, rating for the 
 
 ![](./assets/images/agreement-page.png)
 
-### Screenshot 1
+### Previews:
 
 ![](./assets/images/image1.png)
 
-### Screenshot 2
+
 
 ![](./assets/images/image2.png)
 
-### Screenshot 3
+
 
 ![](./assets/images/image3.png)
     
+## License
+
+![v1](https://img.shields.io/static/v1?label=License&message=MIT&color=green&&style=plastic)
